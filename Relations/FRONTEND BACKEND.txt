@@ -1,0 +1,28 @@
+FRONTEND                           BACKEND
+(React - Port 5173)               (Express - Port 5000)
+
+LoginPage.jsx
+    ↓
+axios.post('http://localhost:5000/api/auth/login')
+    ↓
+[HTTP REQUEST with email/password]
+    ↓                             
+    ┌─────────────────────────────→ server.js
+    │                                app.use("/api/auth", authRoutes)
+    │                                    ↓
+    │                               auth.route.js
+    │                                router.post("/login", login)
+    │                                    ↓
+    │                               auth.controller.js
+    │                                login function
+    │                                - Checks MongoDB
+    │                                - Validates password
+    │                                - Generates tokens
+    │                                - Sets cookies
+    │                                - res.json({...})
+    │                                    ↓
+    └─────────────────────────────← [HTTP RESPONSE]
+    ↓
+response.data = { user: {...}, message: "..." }
+    ↓
+Update UI (show success, redirect, etc.)
