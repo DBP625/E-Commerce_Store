@@ -108,8 +108,10 @@ export const getRecommendedProducts = async (req, res) => {
 
 export const getProductByCategory = async (req, res) => {
   const { category } = req.params;
+  console.log("Fetching products for category:", category);
   try {
     const products = await Product.find({ category });
+    console.log(`Found ${products.length} products for category: ${category}`);
     res.json({ products });
   } catch (error) {
     console.log("Error fetching products by category:", error.message);

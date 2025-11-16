@@ -7,13 +7,13 @@ import toast from "react-hot-toast";
 import { useProductStore } from "../stores/useProductStore";
 
 const categories = [
-  "jean",
+  "jeans",
   "t-shirt",
-  "shoe",
+  "shoes",
   "glasses",
-  "jacket",
-  "suit",
-  "bag",
+  "jackets",
+  "suits",
+  "bags",
 ];
 
 const CreateProductForm = () => {

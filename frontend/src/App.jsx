@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
+import CategoryPage from "./pages/CategoryPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 import { Toaster } from "react-hot-toast";
 import { useUserStore } from "./stores/useUserStore";
@@ -46,6 +48,10 @@ function App() {
               user?.role === "admin" ? <AdminPage /> : <Navigate to="/" />
             }
           />
+
+          <Route path="/category/:category" element={<CategoryPage />} />
+
+          <Route path="/product/:id" element={<ProductDetailPage />} />
         </Routes>
       </div>
       <Toaster />
