@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useProductStore } from "../stores/useProductStore";
 import { ShoppingCart, ArrowLeft } from "lucide-react";
+import { useCartStore } from "../stores/useCartStore";
+import { useUserStore } from "../stores/useUserStore";
+import toast from "react-hot-toast";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -10,6 +13,18 @@ const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const { user } = useUserStore();
+  const { addToCart } = useCartStore();
+
+  const handleAddToCart = async () => {
+    if (!user) {
+      toast.error("Please log in to add items to your cart.", { id: "login" });
+      return;
+    } else {
+      await addToCart(product);
+    }
+  };
 
   useEffect(() => {
     // Find the product from the store
@@ -99,7 +114,10 @@ const ProductDetailPage = () => {
             </div>
 
             {/* Add to Cart Button */}
-            <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors duration-300">
+            <button
+              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors duration-300"
+              onClick={handleAddToCart}
+            >
               <ShoppingCart className="w-5 h-5" />
               Add to Cart
             </button>
