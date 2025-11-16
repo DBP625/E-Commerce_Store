@@ -2,6 +2,9 @@ import React from "react";
 import { useCartStore } from "../stores/useCartStore";
 import CartItem from "../components/CartItem";
 import PeopleAlsoBought from "../components/PeopleAlsoBought";
+import { motion } from "framer-motion";
+import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { cart } = useCartStore();
@@ -17,7 +20,19 @@ const CartPage = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {cart.length === 0 ? (
-              <EmptyCartUI />
+              <div className="flex flex-col items-center justify-center space-y-4 py-16">
+                <ShoppingCart className="h-24 w-24 text-gray-400" />
+                <h3 className="text-2xl font-semibold ">Your cart is empty</h3>
+                <p className="text-gray-400">
+                  Looks like you haven't added anything to your cart yet.
+                </p>
+                <Link
+                  className="mt-4 rounded-md bg-emerald-500 px-6 py-2 text-white transition-colors hover:bg-emerald-600"
+                  to="/"
+                >
+                  Start Shopping
+                </Link>
+              </div>
             ) : (
               <div className="space-y-6">
                 {cart.map((item) => (
@@ -35,6 +50,3 @@ const CartPage = () => {
 };
 
 export default CartPage;
-
-
-
