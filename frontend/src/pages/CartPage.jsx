@@ -1,9 +1,11 @@
 import React from "react";
 import { useCartStore } from "../stores/useCartStore";
 import CartItem from "../components/CartItem";
+import OrderedSummary from "../components/OrderedSummary";
+import GiftCouponCard from "../components/GiftCouponCard";
 import PeopleAlsoBought from "../components/PeopleAlsoBought";
 import { motion } from "framer-motion";
-import { ShoppingCart } from "lucide-react";
+import { Gift, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CartPage = () => {
@@ -43,6 +45,17 @@ const CartPage = () => {
 
             {cart.length > 0 && <PeopleAlsoBought />}
           </motion.div>
+          {cart.length > 0 && (
+            <motion.div
+              className="mt-8 w-full lg:mt-0 lg:ml-8 lg:w-80 flex-none"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <OrderedSummary />
+              <GiftCouponCard />
+            </motion.div>
+          )}
         </div>
       </div>
     </div>
