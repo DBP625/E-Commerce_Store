@@ -32,8 +32,23 @@ const orderSchema = new mongoose.Schema(
       min: 0,
     },
 
-    //Existing Stripe fields
-    // SSLCOMMERZ fields
+    subtotal: {
+      type: Number,
+      required: false,
+    },
+
+    discountAmount: Number,
+    couponCode: String,
+    totalAmount: Number,
+    shipping: {
+      name: String,
+      phone: String,
+      address: String,
+      city: String,
+      state: String,
+      postcode: String,
+      country: String,
+    },
     sslcommerzSessionId: { type: String, unique: true, sparse: true }, // session/val_id or store_tran_id
     sslcommerzTranId: { type: String, sparse: true }, // transaction id returned after success
     paymentGateway: {
