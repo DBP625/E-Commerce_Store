@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UserPlus, Mail, Lock, User, ArrowRight, Loader } from "lucide-react";
 import { motion } from "framer-motion"; // For animations
 import { useUserStore } from "../stores/useUserStore";
-import { useCartStore } from "../stores/useCartStore";
+
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ const SignUpPage = () => {
   });
 
   const { signup, user, loading } = useUserStore(); // Get all from store
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("called here");

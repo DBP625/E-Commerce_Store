@@ -1,18 +1,30 @@
 import React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LogIn, Mail, Lock, ArrowRight, Loader } from "lucide-react";
 import { useUserStore } from "../stores/useUserStore";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const { login, loading } = useUserStore();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    await login(email, password);
+
+    // Get the updated user after login
+    const { user } = useUserStore.getState();
+    if (user) {
+      // Redirect based on role
+      if (user.role === "admin") {
+        navigate("/secret-dashboard");
+      } else {
+        navigate("/");
+      }
+    }
   };
 
   return (
@@ -88,8 +100,14 @@ const LoginPage = () => {
                 />
               </div>
             </div>
-
-
+            {/* <div className="mt-4 text-center">
+              <a
+                href="/forgot-password"
+                className="text-emerald-500 hover:underline"
+              >
+                Forgot Password?
+              </a>
+            </div> */}
             <button
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent 
