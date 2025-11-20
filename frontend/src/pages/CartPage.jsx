@@ -2,7 +2,7 @@ import React from "react";
 import { useCartStore } from "../stores/useCartStore";
 import CartItem from "../components/CartItem";
 import OrderedSummary from "../components/OrderedSummary";
-import GiftCouponCard from "../components/GiftCouponCard";
+// import GiftCouponCard from "../components/GiftCouponCard";
 import PeopleAlsoBought from "../components/PeopleAlsoBought";
 import { motion } from "framer-motion";
 import { Gift, ShoppingCart } from "lucide-react";
@@ -53,7 +53,7 @@ const CartPage = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <OrderedSummary />
-              <GiftCouponCard />
+              {/* <GiftCouponCard /> */}
             </motion.div>
           )}
         </div>
