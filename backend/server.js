@@ -15,6 +15,8 @@ dotenv.config();
 
 const app = express();
 
+const __dirname = path.resolve(); // it means root directory of project
+
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json({ limit: "50mb" })); // Parse JSON request bodies with 50mb limit
 app.use(express.urlencoded({ extended: true, limit: "50mb" })); // Parse URL-encoded data with 50mb limit
@@ -31,6 +33,14 @@ app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/coupons", couponRoutes);
 app.use("/api/payments", paymentRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
