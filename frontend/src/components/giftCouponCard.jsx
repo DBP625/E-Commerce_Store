@@ -34,7 +34,7 @@ const GiftCouponCard = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <div className="space-y-4">
+      {/* <div className="space-y-4">
         <div>
           <label
             htmlFor="voucher"
@@ -64,7 +64,7 @@ const GiftCouponCard = () => {
         >
           Apply Code
         </motion.button>
-      </div>
+      </div> */}
       {isCouponApplied && coupon && (
         <div className="mt-4">
           <h3 className="text-lg font-medium text-gray-300">Applied Coupon</h3>

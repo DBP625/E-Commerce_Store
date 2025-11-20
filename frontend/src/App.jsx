@@ -9,6 +9,10 @@ import AdminPage from "./pages/AdminPage";
 import CategoryPage from "./pages/CategoryPage";
 import CartPage from "./pages/CartPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
+import PurchaseReview from "./pages/PurchaseReview";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentFail from "./pages/PaymentFail";
+import PaymentCancel from "./pages/PaymentCancel";
 
 import { Toaster } from "react-hot-toast";
 import { useUserStore } from "./stores/useUserStore";
@@ -66,6 +70,10 @@ function App() {
           />
 
           <Route path="/product/:id" element={<ProductDetailPage />} />
+          <Route path="/checkout/review" element={<PurchaseReview />} />
+          <Route path="/payment/success" element={<PaymentSuccess />} />
+          <Route path="/payment/fail" element={<PaymentFail />} />
+          <Route path="/payment/cancel" element={<PaymentCancel />} />
         </Routes>
       </div>
       <Toaster />
