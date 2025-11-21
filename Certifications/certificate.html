@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate of Completion - W3 Eden</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #e2e8f0;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr;
+        margin: 0;
+        min-height: 100vh;
+        padding: 20px 0;
+        place-items: center;
+      }
+
+      .slide-container {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        height: 720px;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 1280px;
+      }
+
+      .certificate-border {
+        border: 5px double #0b1d3a;
+        outline: 2px solid #d4a017;
+        outline-offset: -15px;
+        height: 100%;
+        width: 100%;
+        padding: 60px 80px 40px;
+        display: flex;
+        flex-direction: column;
+        background-image: radial-gradient(circle, #fffcf5 0%, #f3f4f6 100%);
+        position: relative;
+      }
+
+      .corner {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border-color: #b45309;
+        border-style: solid;
+        z-index: 10;
+      }
+      .tl {
+        top: 20px;
+        left: 20px;
+        border-width: 4px 0 0 4px;
+      }
+      .tr {
+        top: 20px;
+        right: 20px;
+        border-width: 4px 4px 0 0;
+      }
+      .bl {
+        bottom: 20px;
+        left: 20px;
+        border-width: 0 0 4px 4px;
+      }
+      .br {
+        bottom: 20px;
+        right: 20px;
+        border-width: 0 4px 4px 0;
+      }
+
+      .cert-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+      }
+
+      .logo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 150px;
+      }
+
+      .cuet-logo-img {
+        height: 100px !important; /* increase this to your liking */
+      }
+
+      .logo-img {
+        height: 50px;
+        object-fit: contain;
+        margin-bottom: 5px;
+        padding-left: 80px;
+      }
+
+      .logo-label {
+        font-family: "Lato", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .cert-title {
+        font-family: "Cinzel", serif;
+        font-size: 64px;
+        color: #0b1d3a;
+        text-align: center;
+        margin: 0;
+        line-height: 1;
+        letter-spacing: 4px;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .cert-title-small {
+        font-family: "Cinzel", serif;
+        font-size: 32px;
+        color: #1e3a8a;
+        text-align: center;
+        margin-top: 5px;
+        letter-spacing: 8px;
+      }
+
+      .cert-subtitle {
+        font-family: "Great Vibes", cursive;
+        font-size: 36px;
+        color: #b45309;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .team-line {
+        font-family: "Lato", sans-serif;
+        font-size: 18px;
+        text-align: center;
+        color: #475569;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .cert-body {
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .cert-text {
+        font-family: "Playfair Display", serif;
+        font-size: 24px;
+        color: #334155;
+        line-height: 1.8;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .cert-text.secondary {
+        font-size: 18px;
+        margin-top: 20px;
+        font-style: italic;
+        color: #64748b;
+      }
+
+      .cert-footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        margin-top: 40px;
+        padding: 0 100px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .signature-block {
+        text-align: center;
+        width: 250px;
+      }
+
+      .signature-line {
+        border-top: 2px solid #1e3a8a;
+        margin-bottom: 10px;
+      }
+
+      .signature-title {
+        font-family: "Lato", sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        color: #1e3a8a;
+        text-transform: uppercase;
+      }
+
+      .signature-role {
+        font-family: "Lato", sans-serif;
+        font-size: 14px;
+        color: #64748b;
+      }
+
+      /* W3 Eden Logo Watermark */
+      .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .watermark img {
+        width: 1000px;
+        mix-blend-mode: multiply;
+        opacity: 0.2;
+        filter: blur(0.3px);
+      }
+
+      /* Certificate ID line */
+      .cert-meta {
+        font-family: "Lato", sans-serif;
+        font-size: 12px;
+        color: #94a3b8;
+        text-align: center;
+        margin-top: 0px;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container" id="slide1">
+      <div class="certificate-border">
+        <!-- Ornamental Corners -->
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+        <!-- Header: Logos -->
+        <div class="cert-header">
+          <!-- W3 Eden (Left) -->
+          <div class="logo-wrapper">
+            <img src="./w3eden_logo.png" alt="W3 Eden Logo" class="logo-img" />
+            <div class="logo-label">W3 Eden Inc.</div>
+          </div>
+
+          <!-- Title in Center -->
+          <div>
+            <h1 class="cert-title">CERTIFICATE</h1>
+            <div class="cert-title-small">OF COMPLETION</div>
+          </div>
+
+          <!-- CUET (Right) -->
+          <div class="logo-wrapper">
+            <img src="./cuet.png" alt="CUET Logo" class="cuet-logo-img" />
+            <div class="logo-label">CUET</div>
+          </div>
+        </div>
+
+        <!-- Subtitle + Team Wording -->
+        <div class="cert-subtitle">
+          This is to certify the Industrial Attachment Team
+        </div>
+        <div class="team-line">
+          Department of Computer Science & Engineering, CUET
+        </div>
+
+        <!-- Body Content -->
+        <div class="cert-body">
+          <!-- W3 Eden Logo Watermark -->
+          <div class="watermark">
+            <img
+              src="./w3eden-logo-light-prime.png"
+              alt="W3 Eden Watermark Logo"
+            />
+          </div>
+          <p class="cert-text">
+            For successfully completing the
+            <strong>Industrial Attachment Program</strong>
+            at W3 Eden Inc. The team demonstrated outstanding dedication,
+            technical proficiency, and professional collaboration in software
+            development and SaaS solutions throughout the attachment period.
+          </p>
+
+          <p class="cert-text secondary">
+            Given this day,
+            <span style="border-bottom: 1px dotted #000; padding: 0 10px">
+              20 November 2025
+            </span>
+            <!-- Change the date text above if needed -->
+          </p>
+        </div>
+
+        <!-- Footer: Signatures -->
+        <div class="cert-footer">
+          <div class="signature-block">
+            <div style="height: 50px"></div>
+            <div class="signature-line"></div>
+            <div class="signature-role">CEO, W3 Eden Inc.</div>
+          </div>
+
+          <div class="signature-block">
+            <div style="height: 50px"></div>
+            <div class="signature-line"></div>
+            <!-- <div class="signature-title">Supervisor</div> -->
+            <div class="signature-role">Senior Software Engineer</div>
+          </div>
+        </div>
+
+        <!-- Certificate ID -->
+        <div class="cert-meta">
+          Certificate ID: W3E-ATT-2025-001
+          <!-- You can change this format or number as needed -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
