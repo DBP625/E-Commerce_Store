@@ -1,4 +1,4 @@
-# E-Commerce Store 🛒
+# Kartly 🛒
 
 A full-stack MERN E-Commerce application with authentication, product & category management, and an admin dashboard.  
 This project is structured and written with production-readiness in mind: clean architecture, reusable components, and a focus on real-world workflows.
